@@ -1,7 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import OurProgram from "@/components/OurProgram";
+import HowItWorks from "@/components/HowItWorks";
 import UserTypeSelector from "@/components/UserTypeSelector";
-import FeaturedRequests from "@/components/FeaturedRequests";
+import TotalImpact from "@/components/TotalImpact";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -9,8 +12,11 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
+      <OurProgram />
+      <HowItWorks />
       <UserTypeSelector />
-      <FeaturedRequests />
+      <TotalImpact />
+      <WhyChooseUs />
       <Footer />
     </div>
   );
