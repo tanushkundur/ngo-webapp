@@ -6,7 +6,7 @@ import donorIcon from "@/assets/donor-icon.jpg";
 
 const UserTypeSelector = () => {
   return (
-    <section className="py-16 bg-secondary">
+    <section id="impact" className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">

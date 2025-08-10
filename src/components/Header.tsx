@@ -12,23 +12,17 @@ const Header = () => {
           </Link>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/browse" className="text-muted-foreground hover:text-primary transition-colors">
-              Browse Requests
-            </Link>
-            <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link to="/about" className="text-muted-foreground hover:text-accent transition-colors">
               About
-            </a>
-            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
+            </Link>
+            <Link to="/contact" className="text-muted-foreground hover:text-accent transition-colors">
               Contact
-            </a>
+            </Link>
           </nav>
 
           <div className="flex items-center space-x-3">
             <Button variant="outline" asChild>
-              <Link to="/donor/login">Sign In</Link>
-            </Button>
-            <Button variant="hero" asChild>
-              <Link to="/donor/register">Get Started</Link>
+              <a href="#impact">Get Started</a>
             </Button>
           </div>
         </div>
