@@ -8,7 +8,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/7984be37-dd2d-4800-bb01-be6700dfc46a.png" 
+              src="/lovable-uploads/a9a6d18b-df21-4500-91c1-7a40817ee274.png" 
               alt="Hope Basket Logo" 
               className="w-16 h-16 object-contain"
             />
