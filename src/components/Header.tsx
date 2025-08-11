@@ -10,7 +10,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/7984be37-dd2d-4800-bb01-be6700dfc46a.png" 
               alt="Hope Basket Logo" 
-              className="w-12 h-12 object-contain"
+              className="w-16 h-16 object-contain"
             />
           </Link>
           
