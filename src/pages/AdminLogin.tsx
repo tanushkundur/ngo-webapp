@@ -36,6 +36,11 @@ const AdminLogin = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
+            <div className="bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 rounded-lg p-3 mb-4">
+              <p className="text-sm font-medium text-green-900 dark:text-green-100">Demo Credentials:</p>
+              <p className="text-xs text-green-700 dark:text-green-300">Email: admin@foodbridge.com</p>
+              <p className="text-xs text-green-700 dark:text-green-300">Password: admin123</p>
+            </div>
             <div className="space-y-2">
               <Label htmlFor="email">Admin Email</Label>
               <Input 
