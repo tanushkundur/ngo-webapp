@@ -21,6 +21,9 @@ const Header = () => {
             <Link to="/contact" className="text-muted-foreground hover:text-accent transition-colors">
               Contact
             </Link>
+            <Link to="/admin/login" className="text-muted-foreground hover:text-accent transition-colors">
+              Admin
+            </Link>
           </nav>
 
           <div className="flex items-center space-x-3">
