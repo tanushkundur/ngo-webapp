@@ -14,12 +14,18 @@ const AdminLogin = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     
+    console.log("Login attempt:", { email, password });
+    console.log("Email match:", email === "admin@foodbridge.com");
+    console.log("Password match:", password === "admin123");
+    
     // Simple admin check (in production, this would be server-side)
     if (email === "admin@foodbridge.com" && password === "admin123") {
       localStorage.setItem("adminAuth", "true");
+      console.log("Login successful");
       toast.success("Welcome Admin!");
       navigate("/admin/dashboard");
     } else {
+      console.log("Login failed - invalid credentials");
       toast.error("Invalid credentials");
     }
   };
