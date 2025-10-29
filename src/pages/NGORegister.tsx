@@ -4,9 +4,38 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const NGORegister = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    registrationNumber: "",
+    email: "",
+    causes: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Create NGO request
+    const newRequest = {
+      id: Date.now().toString(),
+      ...formData,
+      status: "pending",
+      submittedDate: new Date().toLocaleDateString(),
+    };
+
+    // Save to localStorage
+    const existingRequests = JSON.parse(localStorage.getItem("ngoRequests") || "[]");
+    localStorage.setItem("ngoRequests", JSON.stringify([...existingRequests, newRequest]));
+
+    toast.success("Registration submitted! Waiting for admin approval.");
+    navigate("/ngo/login");
+  };
+
   return (
     <div className="min-h-screen bg-secondary py-8 px-4">
       <div className="max-w-2xl mx-auto">
@@ -18,71 +47,54 @@ const NGORegister = () => {
               Join our platform to connect with generous donors
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="ngo-name">NGO Name</Label>
-                <Input id="ngo-name" placeholder="Your NGO Name" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="registration-number">Registration Number</Label>
-                <Input id="registration-number" placeholder="REG123456" />
-              </div>
-            </div>
-            
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="description">Organization Description</Label>
-              <Textarea 
-                id="description" 
-                placeholder="Tell us about your NGO's mission and work..."
-                className="min-h-24"
+              <Label htmlFor="ngo-name">NGO Name</Label>
+              <Input 
+                id="ngo-name" 
+                placeholder="Your NGO Name"
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="registration-number">Registration Number</Label>
+              <Input 
+                id="registration-number" 
+                placeholder="REG123456"
+                value={formData.registrationNumber}
+                onChange={(e) => setFormData({...formData, registrationNumber: e.target.value})}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Contact Email</Label>
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="contact@ngo.org"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="causes">Primary Causes</Label>
+              <Input 
+                id="causes" 
+                placeholder="Education, Health, Environment..."
+                value={formData.causes}
+                onChange={(e) => setFormData({...formData, causes: e.target.value})}
+                required
               />
             </div>
             
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Contact Email</Label>
-                <Input id="email" type="email" placeholder="contact@ngo.org" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input id="phone" type="tel" placeholder="+91 98765 43210" />
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="address">Address</Label>
-              <Textarea 
-                id="address" 
-                placeholder="Complete address with city and state"
-                className="min-h-20"
-              />
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="website">Website (Optional)</Label>
-                <Input id="website" type="url" placeholder="https://yourngo.org" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="causes">Primary Causes</Label>
-                <Input id="causes" placeholder="Education, Health, Environment..." />
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="confirm-password">Confirm Password</Label>
-              <Input id="confirm-password" type="password" />
-            </div>
-            
-            <Button className="w-full" variant="trust" size="lg">
-              Register NGO
+            <Button className="w-full" variant="trust" size="lg" type="submit">
+              Submit for Approval
             </Button>
+          </form>
             
             <div className="relative">
               <div className="absolute inset-0 flex items-center">

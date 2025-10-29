@@ -19,6 +19,8 @@ import DonorDashboard from "./pages/DonorDashboard";
 import DonorProfile from "./pages/DonorProfile";
 import DonorDonations from "./pages/DonorDonations";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
           <Route path="/donor/profile" element={<DonorProfile />} />
           <Route path="/donor/donations" element={<DonorDonations />} />
           <Route path="/browse" element={<BrowseRequests />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
